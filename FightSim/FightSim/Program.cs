@@ -10,14 +10,12 @@ namespace FightSim
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Buckle up buckaroo, it's time to fight, please enter the name of the first fighter:");
 
-            Fighter A = new Fighter() { name = Console.ReadLine() };
+            Fighter A = new Fighter() { };
 
-            Console.WriteLine("Now tippity type in the name for fighter two!");
-
-            Fighter B = new Fighter() { name = Console.ReadLine() };
-
+            Fighter B = new Fighter() { };
+            Console.WriteLine("Buckle up buckaroo, it's time to fight, " + A.name + " VS " + B.name);
+            
             bool fighting = true;
 
             Console.WriteLine("It's fighting time!");
@@ -50,7 +48,7 @@ namespace FightSim
                     Console.WriteLine(A.name + " stands victorious, " + B.name + " falls!");
                     fighting = false;
                 }
-                //if a dies
+                //if A dies
                 else
                 {
                     Console.WriteLine(B.name + " stands victorious, " + A.name + " falls!");
@@ -59,7 +57,7 @@ namespace FightSim
                 Console.ReadLine();
             }
 
-            Console.WriteLine("end");
+            Console.WriteLine("That's All Folks!");
 
             Console.ReadLine();
         }
