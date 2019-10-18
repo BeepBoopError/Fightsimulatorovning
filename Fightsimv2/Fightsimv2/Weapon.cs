@@ -8,5 +8,9 @@ namespace Fightsimv2
 {
     class Weapon
     {
+        protected string name;
+
+        
+
     }
 }
