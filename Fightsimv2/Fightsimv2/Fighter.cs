@@ -38,6 +38,12 @@ namespace Fightsimv2
         //en random generator, static
         protected static Random rangen = new Random();
 
+        //the opponent they are fighting
+        protected Fighter opponent;
+
+        //the weapon they are wielding
+        protected Weapon weapon;
+
         //constructor
         public Fighter()
         {
@@ -48,15 +54,19 @@ namespace Fightsimv2
             }
         }
 
-        //när fightern tar skada, kan overideas av karaktärer som har armor
+        //när fightern tar skada.
         public virtual void Hurt(int damage)
         {
+            damage -= rangen.Next(armor[0], armor[1] + 1);
+
+            if (damage < 0 ) { damage = 0; }
+
             hp -= damage;
             if (hp <= 0 ) { alive = false; }
         }
 
         //attackerar en en fiende overidas för att använda vapen
-        public virtual void Attack(Fighter opponent)
+        public virtual void Attack()
         {
             opponent.Hurt(1);
         }
@@ -67,8 +77,8 @@ namespace Fightsimv2
             return position;
         }
 
-
-        public virtual bool Move(Fighter opponent, int amount)
+        //flyttar karaktären, vissa attacker kommer dels att flytta karaktären, och det utgår altid från vart fiende karaktären är, så att forwards är mot karaktöern och backwards är från finenden
+        public virtual bool Move(int amount)
         {
             bool success = true;
 
@@ -92,7 +102,7 @@ namespace Fightsimv2
             {
                 success = false;
                 Console.WriteLine(name + " stumbles!");
-                Move(opponent, rangen.Next(0, 3) - 1);
+                Move(rangen.Next(0, 3) - 1);
             }
 
 
