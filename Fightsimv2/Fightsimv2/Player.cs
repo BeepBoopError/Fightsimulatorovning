@@ -10,19 +10,27 @@ namespace Fightsimv2
     {
 
 
-        public void Setter(Fighter oppTemp)
+        public void Setter(Fighter oppTemp, int startPos)
         {
+            //target opponent
             opponent = oppTemp;
 
-            Console.WriteLine("Type Name");
+            //set starting position
+            position = startPos;
 
+            //player amount of armor
+            armor[0] = 0;
+            armor[1] = 4;
+
+            //get the name of the player
+            Console.WriteLine("Type Name");
             name = Console.ReadLine();
 
-            Console.WriteLine("Choose Weapon" + name);
+            //player chooses a weapon
+            Console.WriteLine("Choose a Weapon, " + name);
             Console.WriteLine(" 1. Sword \n 2. Knife \n 3. Psyonics \n 4. Halberd");
 
-          
-
+            //make sure the player picks one of the waepon options
             bool undone = true;
 
             while (undone)

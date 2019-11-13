@@ -11,11 +11,8 @@ namespace Fightsimv2
         //hitpoints som fightern har
         protected int hp;
 
-        //hur bra fightern är på att parrera attacker minimivärde och maximifärde
-        protected int[] evade;
-
-        //hur träffsäker fightern är
-        protected int baseToHit;
+        //Om Fightern har statuseffecten evade, tar den ingen skada.
+        public bool evade = false;
 
         //vart fightern står
         protected int position;
@@ -36,7 +33,7 @@ namespace Fightsimv2
         public bool random = false;
 
         //en random generator, static
-        protected static Random rangen = new Random();
+        public static Random rangen = new Random();
 
         //the opponent they are fighting
         protected Fighter opponent;
@@ -60,6 +57,8 @@ namespace Fightsimv2
             damage -= rangen.Next(armor[0], armor[1] + 1);
 
             if (damage < 0 ) { damage = 0; }
+
+            if (evade) { damage = 0; }
 
             hp -= damage;
             if (hp <= 0 ) { alive = false; }

@@ -26,22 +26,27 @@ namespace Fightsimv2
             Console.WriteLine("Attack descriptions");
         }
 
-        public virtual void AttackOne()
+        public virtual void AttackOne(Fighter Attacker, Fighter Defender)
         {
 
         }
 
-        public virtual void AttackTwo()
+        public virtual void AttackTwo(Fighter Attacker, Fighter Defender)
         {
 
         }
 
-        public virtual void AttackThree()
+        public virtual void AttackThree(Fighter Attacker, Fighter Defender)
         {
 
         }
 
-        public virtual void AttackFour()
+        public virtual void AttackFour(Fighter Attacker, Fighter Defender)
+        {
+
+        }
+
+        public bool AAttackXY(int x, int y, Fighter Attacker, Fighter Defender)
         {
 
         }
