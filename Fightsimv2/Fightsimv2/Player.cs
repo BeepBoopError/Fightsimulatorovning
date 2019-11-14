@@ -39,20 +39,20 @@ namespace Fightsimv2
                 string inner = Console.ReadLine();
                 if (inner == "1")
                 {
-                    weapon = new Sword();
+                    weapon = new Sword(this);
                    
                 }
                 else if (inner =="2")
                 {
-                    weapon = new Knife();
+                    weapon = new Knife(this);
                 }
                 else if (inner == "3")
                 {
-                    weapon = new Psyonic();
+                    weapon = new Psyonic(this);
                 }
                 else if (inner == "4")
                 {
-                    weapon = new Halberd();
+                    weapon = new Halberd(this);
                 }
                 else
                 {

@@ -35,7 +35,47 @@ x |         \___      -|
             p1.Setter(p2, 2);
             p2.Setter(p1, 5);
             Drawer.PosUpdate(p1, p2);
-            
+
+            bool runGame = true;
+
+            while (runGame)
+            {
+                //players decide what they do
+
+                //turnstarters are run
+
+                //a random player gets to go first
+
+                if (Fighter.rangen.Next(0,2) == 1)
+                {
+                    //player1 does their attack
+
+                    //check if they are both alive
+
+                    //render approriate 
+
+                    //player 2 does their attack
+                }
+                else
+                {
+                    //player 2 does their attack
+
+                    //check if they are both alive
+
+                    //render appropriate
+                    
+                    //player 1 does their attack
+                }
+
+                // check if they are both alive
+                
+                //turnenders ar run
+                
+                
+                
+                
+            }
+
             
 
             Console.ReadLine();

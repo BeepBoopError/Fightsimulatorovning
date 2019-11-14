@@ -38,8 +38,31 @@ namespace Fightsimv2
         //the opponent they are fighting
         protected Fighter opponent;
 
-        //the weapon they are wielding
-        protected Weapon weapon;
+        //the weapon they are wielding, this should not be able to be set from outside of the class, but getting the weapon is required so that one can run the attack descriptions
+        public Weapon weapon
+        {
+            protected set
+            {
+                weapon = value;
+            }
+            get
+            {
+                return weapon;
+            }
+        }
+
+        //vart karaktären defendar under rundan
+        public int defend
+        {
+            protected set
+            {
+                defend = value;
+            }
+            get
+            {
+                return defend;
+            }
+        }
 
         //constructor
         public Fighter()
@@ -64,7 +87,7 @@ namespace Fightsimv2
             if (hp <= 0 ) { alive = false; }
         }
 
-        //attackerar en en fiende overidas för att använda vapen
+        //Attackerar en en fiende overidas för att använda vapen
         public virtual void Attack()
         {
             opponent.Hurt(1);
@@ -76,7 +99,7 @@ namespace Fightsimv2
             return position;
         }
 
-        //flyttar karaktären, vissa attacker kommer dels att flytta karaktären, och det utgår altid från vart fiende karaktären är, så att forwards är mot karaktöern och backwards är från finenden
+        //flyttar karaktären, vissa Attacker kommer dels att flytta karaktären, och det utgår altid från vart fiende karaktären är, så att forwards är mot karaktöern och backwards är från finenden
         public virtual bool Move(int amount)
         {
             bool success = true;
