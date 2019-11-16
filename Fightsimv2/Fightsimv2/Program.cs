@@ -69,6 +69,8 @@ x |         \___      -|
 
                 // check if they are both alive
                 
+                //render appropriate
+
                 //turnenders ar run
                 
                 
