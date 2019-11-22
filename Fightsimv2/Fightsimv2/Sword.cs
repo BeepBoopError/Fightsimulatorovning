@@ -12,6 +12,8 @@ namespace Fightsimv2
 
         public Sword(Fighter WTemp) : base(WTemp)
         {
+            name = "Sword";
+
             Console.WriteLine("Sword chosen");
         }
 
@@ -30,46 +32,46 @@ namespace Fightsimv2
             Console.WriteLine("   High damage, Hits lower 1 forward ");
         }
 
-        public override void AttackOne(Fighter Attacker, Fighter Defender)
+        public override void AttackOne()
         {
-            bool hit1 = AAttackXY(1, 2, Attacker, Defender);
-            bool hit2 = AAttackXY(2, 2, Attacker, Defender);
+            bool hit1 = AAttackXY(1, 2);
+            bool hit2 = AAttackXY(2, 2);
 
             if (hit1 || hit2)
             {
-                Defender.Hurt(Fighter.rangen.Next(3, 7));
+                Opponent.Hurt(Fighter.rangen.Next(3, 7));
             }
         }
 
-        public override void AttackTwo(Fighter Attacker, Fighter Defender)
+        public override void AttackTwo()
         {
-            bool hit = AAttackXY(1, 3, Attacker, Defender);
+            bool hit = AAttackXY(1, 1);
             if (hit)
             {
-                Defender.Hurt(Fighter.rangen.Next(2, 6));
-                Defender.Move(-1);
+                Opponent.Hurt(Fighter.rangen.Next(2, 6));
+                Opponent.Move(-1);
             }
         }
 
-        public override void AttackThree(Fighter Attacker, Fighter Defender)
+        public override void AttackThree()
         {
-            bool move = Attacker.Move(1);
+            bool move = Owner.Move(1);
             if (move)
             {
-                bool hit = AAttackXY(1, 2, Attacker, Defender);
+                bool hit = AAttackXY(1, 2);
                 if (hit)
                 {
-                    Defender.Hurt(Fighter.rangen.Next(3, 7));
+                    Opponent.Hurt(Fighter.rangen.Next(3, 7));
                 }
             }
         }
 
-        public override void AttackFour(Fighter Attacker, Fighter Defender)
+        public override void AttackFour()
         {
-            bool hit = AAttackXY(1, 1, Attacker, Defender);
+            bool hit = AAttackXY(1, 3);
             if (hit)
             {
-                Defender.Hurt(Fighter.rangen.Next(5, 12));
+                Opponent.Hurt(Fighter.rangen.Next(5, 12));
             }
         }
     }

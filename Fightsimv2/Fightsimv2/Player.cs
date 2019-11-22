@@ -22,6 +22,9 @@ namespace Fightsimv2
             armor[0] = 0;
             armor[1] = 4;
 
+            //hit ponts that the character has
+            hp = 20;
+
             //get the name of the player
             Console.WriteLine("Type Name");
             name = Console.ReadLine();
@@ -39,20 +42,20 @@ namespace Fightsimv2
                 string inner = Console.ReadLine();
                 if (inner == "1")
                 {
-                    weapon = new Sword(this);
+                    Weapon = new Sword(this);
                    
                 }
                 else if (inner =="2")
                 {
-                    weapon = new Knife(this);
+                    Weapon = new Knife(this);
                 }
                 else if (inner == "3")
                 {
-                    weapon = new Psyonic(this);
+                    Weapon = new Psyonic(this);
                 }
                 else if (inner == "4")
                 {
-                    weapon = new Halberd(this);
+                    Weapon = new Halberd(this);
                 }
                 else
                 {

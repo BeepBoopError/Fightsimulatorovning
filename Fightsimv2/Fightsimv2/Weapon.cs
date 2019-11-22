@@ -8,17 +8,27 @@ namespace Fightsimv2
 {
     class Weapon
     {
+        /*
+             _ 11|21|
+            |A|12|22|
+            ---13|23|
 
+        */
         //the name of the weapon
         protected string name;
 
         //the fighter that i wielding the weapon
         protected Fighter Owner;
 
+        //The fighter the owner is fighting
+        protected Fighter Opponent;
+
+
         //setting the owner when the weapon is created
         public Weapon(Fighter WTemp)
         {
             Owner = WTemp;
+            Opponent = Owner.GetOpp();
         }
         
         //things that should be run at the start of the turn
@@ -40,44 +50,55 @@ namespace Fightsimv2
         }
 
         //attack one
-        public virtual void AttackOne(Fighter Attacker, Fighter Defender)
+        public virtual void AttackOne()
         {
 
         }
 
         //attack two
-        public virtual void AttackTwo(Fighter Attacker, Fighter Defender)
+        public virtual void AttackTwo()
         {
 
         }
 
         //attack three
-        public virtual void AttackThree(Fighter Attacker, Fighter Defender)
+        public virtual void AttackThree()
         {
 
         }
 
         //attack four
-        public virtual void AttackFour(Fighter Attacker, Fighter Defender)
+        public virtual void AttackFour()
         {
 
         }
 
         //Auto attack X/Y is a method to see if you hit when attacking, taking where to attack, who is attacking and who is being attacked as paramiters, and returning true if the fighter hits
-        public bool AAttackXY(int x, int y, Fighter Attacker, Fighter Defender)
+        protected bool AAttackXY(int x, int y)
         {
             bool hit = false;
 
-            if(Attacker.GetPos() + x == Defender.GetPos() || Attacker.GetPos() - x == Defender.GetPos())
+            if(Owner.GetPos() + x == Opponent.GetPos() || Owner.GetPos() - x == Opponent.GetPos())
             {
-                if (Defender.defend != y)
+                if (Opponent.defend != y)
                 {
                     hit = true;
+                    Console.WriteLine(Owner.name +" hits!");
+                }
+                else
+                {
+                    Console.WriteLine(Opponent.name + " defends!");
                 }
             }
 
 
             return hit;
+        }
+
+        //get thename of the weapon
+        public string GetName()
+        {
+            return name;
         }
 
     }

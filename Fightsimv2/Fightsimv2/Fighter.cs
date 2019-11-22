@@ -18,7 +18,7 @@ namespace Fightsimv2
         protected int position;
 
         //hur mycket skada kraktären kan blockera, minimi och maximi värde
-        protected int[] armor;
+        protected int[] armor = new int[2];
 
         //om karktären lever
         protected bool alive = true;
@@ -38,31 +38,23 @@ namespace Fightsimv2
         //the opponent they are fighting
         protected Fighter opponent;
 
-        //the weapon they are wielding, this should not be able to be set from outside of the class, but getting the weapon is required so that one can run the attack descriptions
-        public Weapon weapon
+        //the weapon they are wielding, this should not be able to be set from outside of the class, but getting the weapon is required so that one can run the attack description
+        private Weapon Aweapon;
+        public Weapon Weapon
         {
             protected set
             {
-                weapon = value;
+                Aweapon = value;
             }
             get
             {
-                return weapon;
+                return Aweapon;
             }
         }
 
         //vart karaktären defendar under rundan
-        public int defend
-        {
-            protected set
-            {
-                defend = value;
-            }
-            get
-            {
-                return defend;
-            }
-        }
+        public int defend;
+       
 
         //constructor
         public Fighter()
@@ -87,7 +79,7 @@ namespace Fightsimv2
             if (hp <= 0 ) { alive = false; }
         }
 
-        //Attackerar en en fiende overidas för att använda vapen
+        //Ownerar en en fiende overidas för att använda vapen
         public virtual void Attack()
         {
             opponent.Hurt(1);
@@ -99,7 +91,7 @@ namespace Fightsimv2
             return position;
         }
 
-        //flyttar karaktären, vissa Attacker kommer dels att flytta karaktären, och det utgår altid från vart fiende karaktären är, så att forwards är mot karaktöern och backwards är från finenden
+        //flyttar karaktären, vissa Owner kommer dels att flytta karaktären, och det utgår altid från vart fiende karaktären är, så att forwards är mot karaktöern och backwards är från finenden
         public virtual bool Move(int amount)
         {
             bool success = true;
@@ -130,6 +122,52 @@ namespace Fightsimv2
 
             return success;
         }
+
+        //hämtar vem dens opponent är
+        public Fighter GetOpp()
+        {
+            return opponent;
+        }
+
+        //kör en attack beroende på nummeret av attacken vald
+        public void AADial(int attackNum)
+        {
+            if (attackNum == 1)
+            {
+                Weapon.AttackOne();
+            }
+            else if (attackNum == 2)
+            {
+                Weapon.AttackTwo();
+            }
+            else if (attackNum == 3)
+            {
+                Weapon.AttackThree();
+            }
+            else if (attackNum == 4)
+            {
+                Weapon.AttackFour();
+            }
+            else
+            {
+                Console.WriteLine("Error in attack request, choosing random");
+                AADial(Fighter.rangen.Next(1,5));
+            }
+
+        }
+
+        public bool GetAlive()
+        {
+            return alive;
+        }
+
+        public void PrintStats()
+        {
+            Console.WriteLine("Weapon: " + Weapon.GetName());
+            Console.WriteLine("Hit Points: " + hp);
+            Console.WriteLine("Position: " + position);
+        }
+
 
     }
 }

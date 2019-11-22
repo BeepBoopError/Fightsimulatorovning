@@ -13,7 +13,7 @@ namespace Fightsimv2
 
         public Halberd(Fighter WTemp) : base(WTemp)
         {
-            
+            name = "Halberd";
 
             Console.WriteLine("Halberd chosen");
         }
@@ -30,64 +30,64 @@ namespace Fightsimv2
             Console.WriteLine("   Variable damage, Hits upper 1 forwards for light damage -> Hits middle 1 forwards for medium damage -> Hits lower 1 forwards for high damage");
 
             Console.WriteLine("4.  Overhead");
-            Console.WriteLine("   Medium damage, Moves forward 1 -> Hits upper 1 forwards -> Pulls 3");
+            Console.WriteLine("   Medium damage, Moves forward 1 -> Hits middle 1 forwards -> Pulls 3");
         }
 
 
-        public override void AttackOne(Fighter Attacker, Fighter Defender)
+        public override void AttackOne()
         {
-            bool move = Attacker.Move(1);
+            bool move = Owner.Move(1);
             if (move)
             {
-                bool hit1 = AAttackXY(1, 2, Attacker, Defender);
-                bool hit2 = AAttackXY(2, 2, Attacker, Defender);
+                bool hit1 = AAttackXY(1, 2);
+                bool hit2 = AAttackXY(2, 2);
                 if(hit1 || hit2)
                 {
-                    Defender.Hurt(Fighter.rangen.Next(3, 7));
+                    Opponent.Hurt(Fighter.rangen.Next(3, 7));
                 }
             }
         }
 
-        public override void AttackTwo(Fighter Attacker, Fighter Defender)
+        public override void AttackTwo()
         {
-            bool hit1 = AAttackXY(1, 1, Attacker, Defender);
-            bool hit2 = AAttackXY(2, 1, Attacker, Defender);
+            bool hit1 = AAttackXY(1, 3);
+            bool hit2 = AAttackXY(2, 3);
 
             if (hit1 || hit2)
             {
-                Defender.Hurt(Fighter.rangen.Next(3, 7));
+                Opponent.Hurt(Fighter.rangen.Next(3, 7));
             }
         }
 
-        public override void AttackThree(Fighter Attacker, Fighter Defender)
+        public override void AttackThree()
         {
-            bool hit = AAttackXY(1, 3, Attacker, Defender);
+            bool hit = AAttackXY(1, 1);
             if (hit)
             {
-                Defender.Hurt(Fighter.rangen.Next(2, 6));
-                bool hit2 = AAttackXY(1, 2, Attacker, Defender);
+                Opponent.Hurt(Fighter.rangen.Next(2, 6));
+                bool hit2 = AAttackXY(1, 2);
                 if (hit2)
                 {
-                    Defender.Hurt(Fighter.rangen.Next(3, 7));
-                    bool hit3 = AAttackXY(1, 1, Attacker, Defender);
+                    Opponent.Hurt(Fighter.rangen.Next(3, 7));
+                    bool hit3 = AAttackXY(1, 3);
                     if (hit3)
                     {
-                        Defender.Hurt(Fighter.rangen.Next(5, 12));
+                        Opponent.Hurt(Fighter.rangen.Next(5, 12));
                     }
                 }
             }
         }
 
-        public override void AttackFour(Fighter Attacker, Fighter Defender)
+        public override void AttackFour()
         {
-            bool move = Attacker.Move(1);
+            bool move = Owner.Move(1);
             if (move)
             {
-                bool hit = AAttackXY(1, 3, Attacker, Defender);
+                bool hit = AAttackXY(1, 2);
                 if (hit)
                 {
-                    Defender.Hurt(Fighter.rangen.Next(3, 7));
-                    Defender.Move(3);
+                    Opponent.Hurt(Fighter.rangen.Next(3, 7));
+                    Opponent.Move(3);
                 }
             }
         }
