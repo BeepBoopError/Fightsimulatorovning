@@ -98,7 +98,7 @@ namespace Fightsimv2
         //get thename of the weapon
         public string GetName()
         {
-            return name;
+            return name; 
         }
 
     }

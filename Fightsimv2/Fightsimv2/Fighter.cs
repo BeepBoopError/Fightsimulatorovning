@@ -79,8 +79,8 @@ namespace Fightsimv2
             if (hp <= 0 ) { alive = false; }
         }
 
-        //Ownerar en en fiende overidas för att använda vapen
-        public virtual void Attack()
+        //Ownerar en en fiende overidas för att använda vapen !anvnds inte!
+        private virtual void Attack()
         {
             opponent.Hurt(1);
         }
